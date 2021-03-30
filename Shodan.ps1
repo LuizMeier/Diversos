@@ -14,7 +14,6 @@ $plainKey = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropS
 # Parâmetros
 $urlBase = "https://api.shodan.io"
 
-
 # Chama a API e traz os resultados conforme necessidade
 
 # Host específico
@@ -27,7 +26,6 @@ Write-Host -ForegroundColor Yellow "Informe a rede no formato CIDR: " -NoNewline
 $hostnet = Read-Host
 $results = Invoke-WebRequest ($urlBase + "/shodan/host/search" + "?key=" + $plainKey + "&query=net:" + "$hostnet") 
 $results | ConvertFrom-Json | select -expand matches | select ip_str, port
-
 
 ##########################################################################
 

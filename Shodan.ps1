@@ -26,7 +26,7 @@ Invoke-WebRequest ($urlBase + "/shodan/host/" + $hostip + "?key=" + $plainKey) |
 Write-Host -ForegroundColor Yellow "Informe a rede no formato CIDR: " -NoNewline
 $hostnet = Read-Host
 $results = Invoke-WebRequest ($urlBase + "/shodan/host/search" + "?key=" + $plainKey + "&query=net:" + "$hostnet") 
-$results | ConvertFrom-Json | select -expand XPTO
+$results | ConvertFrom-Json | select -expand matches | select ip_str, port
 
 
 ##########################################################################
